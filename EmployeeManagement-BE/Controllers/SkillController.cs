@@ -1,5 +1,5 @@
 ﻿using EmployeeManagement.Data;
-using EmployeeManagement.Models;
+using EmployeeManagement.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,14 +18,15 @@ namespace EmployeeManagement.Controllers
 
         // 1. Tạo skill mới
         [HttpPost("create")]
-        public async Task<IActionResult> CreateSkill([FromBody] string skillName)
+        public async Task<IActionResult> CreateSkill([FromBody] SkillCreateDto dto)
         {
-            if (string.IsNullOrWhiteSpace(skillName)) return BadRequest("Skill name is required.");
+            if (string.IsNullOrWhiteSpace(dto.Name))
+                return BadRequest("Tên kỹ năng không được để trống");
 
-            var exists = await _context.Skills.AnyAsync(s => s.Name == skillName);
-            if (exists) return BadRequest("Skill already exists.");
+            var exists = await _context.Skills.AnyAsync(s => s.Name == dto.Name);
+            if (exists) return BadRequest("Kỹ năng đã tồn tại");
 
-            var skill = new Skill { Name = skillName };
+            var skill = new Skill { Name = dto.Name };
             _context.Skills.Add(skill);
             await _context.SaveChangesAsync();
 
