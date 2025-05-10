@@ -30,19 +30,19 @@ function EmployeeListPage() {
 
     return (
         <div>
-            <h2>Danh sách nhân viên</h2>
+            <h2>Employee List</h2>
 
             <Link to="/create">
-                <button>Thêm nhân viên</button>
+                <button>Create</button>
             </Link>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Họ tên</th>
+                        <th>Full Name</th>
                         <th>Email</th>
-                        <th>Chức vụ</th>
-                        <th>Hành động</th>
+                        <th>Position</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

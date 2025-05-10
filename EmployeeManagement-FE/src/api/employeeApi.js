@@ -1,7 +1,7 @@
-import axios from 'axios';
+﻿import axios from 'axios';
 
 const API_BASE = 'https://localhost:7138/api/employee';
-
+//Sử dụng thư viện axios để gọi API
 export const getAllEmployees = () => axios.get(`${API_BASE}/list`);
 export const getEmployee = (id) => axios.get(`${API_BASE}/getdetail/${id}`);
 export const createEmployee = (data) => axios.post(`${API_BASE}/create`, data);

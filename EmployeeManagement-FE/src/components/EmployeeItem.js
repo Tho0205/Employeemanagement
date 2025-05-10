@@ -10,10 +10,17 @@ function EmployeeItem({ employee, onDelete }) {
             <td>{employee.email}</td>
             <td>{employee.position}</td>
             <td>
-                <button onClick={() => navigate(`/edit/${employee.id}`)}>Sửa</button>
-                <button onClick={() => onDelete(employee.id)}>Xoá</button>
-                {/* Nút Chi tiết */}
-                <button onClick={() => navigate(`/details/${employee.id}`)}>Chi tiết</button>
+                <button onClick={() => navigate(`/edit/${employee.id}`)}>Edit</button>
+                <button
+                    onClick={() => {
+                        if (window.confirm('Bạn có chắc chắn xoá nhân viên này?')) {
+                            onDelete(employee.id);
+                        }
+                    }}
+                >
+                    Delete
+                </button>
+                <button onClick={() => navigate(`/details/${employee.id}`)}>Detail</button>
             </td>
         </tr>
     );

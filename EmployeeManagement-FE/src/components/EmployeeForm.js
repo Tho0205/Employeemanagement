@@ -3,28 +3,32 @@
 function EmployeeForm({ formData, onChange, onSubmit }) {
     return (
         <form onSubmit={onSubmit}>
+            <label>Full Name</label>
             <input
                 name="fullName"
                 value={formData.fullName}
                 onChange={onChange}
-                placeholder="Họ tên"
+                placeholder="Full Name"
                 required
             />
+            <label>Email</label>
             <input
+                type="email"
                 name="email"
                 value={formData.email}
                 onChange={onChange}
                 placeholder="Email"
                 required
             />
+            <label>Position</label>
             <input
                 name="position"
                 value={formData.position}
                 onChange={onChange}
-                placeholder="Chức vụ"
+                placeholder="Position"
                 required
             />
-            <button type="submit">Lưu</button>
+            <button type="submit">Save</button>
         </form>
     );
 }

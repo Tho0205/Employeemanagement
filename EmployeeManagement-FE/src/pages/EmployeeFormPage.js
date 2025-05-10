@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getEmployee, createEmployee, updateEmployee } from '../api/employeeApi'; // Sửa lại để thêm `createEmployee`
+import { getEmployee, createEmployee, updateEmployee } from '../api/employeeApi'; 
 import EmployeeForm from '../components/EmployeeForm';
 
 function EmployeeFormPage() {
@@ -60,9 +60,9 @@ function EmployeeFormPage() {
 
     return (
         <div>
-            <h2>{isEditing ? 'Sửa thông tin nhân viên' : 'Thêm nhân viên mới'}</h2>
+            <h2>{isEditing ? 'Edit' : 'Create'}</h2>
             <EmployeeForm formData={formData} onChange={handleChange} onSubmit={handleSubmit} />
-            <button onClick={handleBack}>Quay lại</button>
+            <button onClick={handleBack}>Back</button>
         </div>
     );
 }

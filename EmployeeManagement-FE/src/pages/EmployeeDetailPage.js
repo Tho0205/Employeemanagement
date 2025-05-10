@@ -18,17 +18,16 @@ function EmployeeDetailPage() {
     }, [id]);
 
     if (!employee) {
-        return <div>Đang tải...</div>; // Hiển thị thông báo khi chưa có dữ liệu
+        return <div>Do not have any Empolyee...</div>; // Hiển thị thông báo khi chưa có dữ liệu
     }
 
     return (
         <div>
-            <h2>Chi tiết nhân viên</h2>
-            <p><strong>Họ tên:</strong> {employee.fullName}</p>
+            <h2>Detail </h2>
+            <p><strong>Full Name:</strong> {employee.fullName}</p>
             <p><strong>Email:</strong> {employee.email}</p>
-            <p><strong>Chức vụ:</strong> {employee.position}</p>
-            {/* Nút quay lại */}
-            <button onClick={() => window.history.back()}>Quay lại</button>
+            <p><strong>Position:</strong> {employee.position}</p>
+            <button onClick={() => window.history.back()}>Back</button>
         </div>
     );
 }
