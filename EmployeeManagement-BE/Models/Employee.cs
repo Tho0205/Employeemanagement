@@ -7,6 +7,9 @@
         public string Email { get; set; }
         public string Position { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public ICollection<EmployeeSkill> EmployeeSkills { get; set; }
+
     }
 
 }

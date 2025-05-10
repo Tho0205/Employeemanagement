@@ -3,17 +3,36 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagement.Data
 {
-    public class AppDbContext : DbContext // AppDBContext là lớp được kế thừa từ DBContext Để tương tác với cơ sở dữ liệu
+    public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }//Constructor của AppDBContext nhận vào các tùy chọn cấu hình cho DBContext và truyền nó đến lớp cơ sở (base class) DBContext
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Employee> Employees { get; set; } //Getter và setter cho DbSet<Employee> Employees, đại diện cho bảng Employees trong cơ sở dữ liệu
+        // Các bảng chính
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<EmployeeSkill> EmployeeSkills { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Ràng buộc Email là duy nhất
             modelBuilder.Entity<Employee>()
                 .HasIndex(e => e.Email)
                 .IsUnique();
+
+            // Thiết lập khóa chính cho bảng trung gian
+            modelBuilder.Entity<EmployeeSkill>()
+                .HasKey(es => new { es.EmployeeId, es.SkillId });
+
+            // Thiết lập quan hệ nhiều-nhiều
+            modelBuilder.Entity<EmployeeSkill>()
+                .HasOne(es => es.Employee)
+                .WithMany(e => e.EmployeeSkills)
+                .HasForeignKey(es => es.EmployeeId);
+
+            modelBuilder.Entity<EmployeeSkill>()
+                .HasOne(es => es.Skill)
+                .WithMany(s => s.EmployeeSkills)
+                .HasForeignKey(es => es.SkillId);
         }
     }
 
