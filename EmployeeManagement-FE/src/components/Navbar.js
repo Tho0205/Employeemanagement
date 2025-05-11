@@ -1,13 +1,13 @@
 ﻿import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import '../css/Navbar.css'; // style riêng nếu bạn muốn
+import '../css/Navbar.css'; 
 
 function Navbar() {
     const location = useLocation();
 
     return (
         <nav className="navbar">
-            <div className="navbar-title">Employee Management</div>
+
             <ul className="navbar-menu">
                 <li className={location.pathname === '/' ? 'active' : ''}>
                     <Link to="/">Employees</Link>

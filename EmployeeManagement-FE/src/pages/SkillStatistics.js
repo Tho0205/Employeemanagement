@@ -16,12 +16,12 @@ function SkillStatistics() {
 
     return (
         <div>
-            <h2>Thống kê kỹ năng</h2>
+            <h2>Skill Statics</h2>
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Kỹ năng</th>
-                        <th>Số nhân viên</th>
+                        <th>Skill</th>
+                        <th>No Employee</th>
                     </tr>
                 </thead>
                 <tbody>
