@@ -5,7 +5,7 @@ function EmployeeForm({ formData, onChange, onSubmit }) {
         <form onSubmit={onSubmit}>
             <label>Full Name</label>
             <input
-                name="fullName"
+                name="Họ tên"
                 value={formData.fullName}
                 onChange={onChange}
                 placeholder="Full Name"
